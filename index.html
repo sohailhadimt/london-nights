@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>London Nights</title>
+  <meta name="description" content="A third-person open-world stroll through central London — the Shard, the Gherkin, the Thames, and a red bus over London Bridge." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect fill='%230b1220' width='64' height='64'/><text y='48' x='8' font-size='42' fill='%23e8c36a'>L</text></svg>" />
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="loader" class="overlay">
+    <div class="brand">
+      <p class="eyebrow">Central London</p>
+      <h1>London Nights</h1>
+      <p class="tag">The City, the river, and a car with your name on it.</p>
+      <div class="load-track"><div id="load-bar"></div></div>
+      <p id="load-text" class="muted">Loading…</p>
+    </div>
+  </div>
+
+  <div id="creator" class="overlay hidden">
+    <div class="creator-wrap">
+      <div class="brand small">
+        <p class="eyebrow">Character</p>
+        <h1>London Nights</h1>
+      </div>
+      <div class="creator-grid">
+        <canvas id="creator-view" width="280" height="360"></canvas>
+        <form id="creator-form" class="panel form" onsubmit="return false">
+          <fieldset>
+            <legend>Who are you</legend>
+            <label class="radio"><input type="radio" name="gender" value="male" checked /> Male</label>
+            <label class="radio"><input type="radio" name="gender" value="female" /> Female</label>
+          </fieldset>
+          <label>Skin tone <input type="range" id="skin" min="0" max="5" value="1" /></label>
+          <label>Hair colour <input type="range" id="hair" min="0" max="6" value="0" /></label>
+          <label>Hair style <select id="hairstyle"></select></label>
+          <label>Top <select id="top"></select></label>
+          <label>Bottom <select id="bottom"></select></label>
+          <label>Top colour <input type="color" id="topcolor" value="#1b3a5f" /></label>
+          <label>Bottom colour <input type="color" id="botcolor" value="#1c1c1c" /></label>
+          <button type="button" id="play-btn" class="primary">Walk out onto London Bridge</button>
+          <p class="muted fine">WASD to walk · Shift to run · mouse to look · E to enter cars, shops and the Tube. On a phone, use the stick and buttons.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="hud" class="hidden">
+    <div id="place"></div>
+    <canvas id="minimap" width="180" height="180"></canvas>
+    <div id="prompt" class="hidden"></div>
+    <div id="speedo" class="hidden">
+      <span id="speedo-num">0</span>
+      <small>MPH</small>
+      <span id="speedo-gear">D</span>
+    </div>
+    <div id="help">H help</div>
+  </div>
+
+  <div id="touch" class="touch hidden">
+    <div id="stick"><div id="knob"></div></div>
+    <div class="btns">
+      <button id="btn-run">RUN</button>
+      <button id="btn-brake">BRAKE</button>
+      <button id="btn-enter" class="gold">E</button>
+    </div>
+  </div>
+
+  <div id="modal" class="overlay hidden"></div>
+  <div id="toast" class="hidden"></div>
+
+  <footer id="credit">Map data © OpenStreetMap contributors, ODbL</footer>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
